@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tasks>
+    <task>
+        <date>2023-11-24</date>
+        <title>Задача 1</title>
+        <completed>true</completed>
+    </task>
+    <task>
+        <date>2023-11-25</date>
+        <title>Задача 2</title>
+        <completed>false</completed>
+    </task>
+    <task>
+        <date>2023-11-26</date>
+        <title>Задача 3</title>
+        <completed>true</completed>
+    </task>
+</tasks>
