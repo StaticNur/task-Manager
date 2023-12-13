@@ -1,10 +1,7 @@
-package org.example.newTaskManager;
+package org.example.newTaskManager.service;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import org.example.newTaskManager.controller.TaskManagerController;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -14,24 +11,17 @@ public class TaskRunner implements Runnable {
     private final TaskStore<ScheduledTask> taskStore;
     private boolean running = true;
     private final Lock lock =  new ReentrantLock();
-    private final ListView<String> textListView;
-    private final ProgressData progressData;
-    private final Button button;
-    public TaskRunner(TaskStore<ScheduledTask> taskStore, ProgressData progressData, ListView<String> textListView, Button button) {
+    private final TaskManagerController ui = TaskManagerController.getINSTANCE();
+    public TaskRunner(TaskStore<ScheduledTask> taskStore) {
         this.taskStore = taskStore;
-        this.progressData = progressData;
-        this.textListView = textListView;
-        this.button = button;
     }
 
     @Override
     public void run() {
         long executionTime = 0;
         ScheduledTask scheduledTask = taskStore.poll();
-
-        //textListView.getItems().remove(scheduledTask);
-
-        System.out.println("Количество потоков");
+        var progressData = ui.setProgress(scheduledTask.execute());
+        Platform.runLater(() -> ui.deleteQueueText(scheduledTask.context.execute()));
         while (running) {
             double progress;
             System.out.println(Thread.currentThread().getName());
@@ -40,29 +30,23 @@ public class TaskRunner implements Runnable {
                 if (scheduledTask != null && executionTime >= scheduledTask.getNextExecutionTime()) {
                     scheduledTask.execute();
                     running = false;
+                    System.out.println("Прогресс-бар полностью заполнен!");
+                    //Platform.runLater(() -> ui.deleteProgress(scheduledTask.execute().getTask()));
                 }
                 executionTime++;
                 progress = (double) executionTime / scheduledTask.getNextExecutionTime();
             } finally {
                 //lock.unlock();
             }
-            Platform.runLater(() -> progressData.setProgress(progress));
-            if (scheduledTask != null && scheduledTask.isRecurring()) {
-                taskStore.add(scheduledTask.nextScheduledTask());
-            }
-
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    System.out.println("Button clicked! Пауза");
-                    if (running) {
-                        stop();
-                    } else {
-                        running();
-                    }
-                }
-            });
+            Platform.runLater(() -> progressData.setProgressProperty(progress));
             sleep();
+            ui.getStop().setOnAction(event -> {
+                stop();
+            });
+
+            ui.getContinueButton().setOnAction(event -> {
+                running();
+            });
         }
     }
     public void stop() {
@@ -75,7 +59,6 @@ public class TaskRunner implements Runnable {
     private void sleep() {
         try {
             TimeUnit.MILLISECONDS.sleep(50);
-            //wait(100);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

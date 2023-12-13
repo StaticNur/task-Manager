@@ -1,4 +1,6 @@
-package org.example.newTaskManager;
+package org.example.newTaskManager.service;
+
+import org.example.newTaskManager.objects.Entity;
 
 public abstract class ScheduledTask {
     public final ExecutionContext context;
@@ -6,9 +8,9 @@ public abstract class ScheduledTask {
         this.context = context;
     }
     abstract boolean isRecurring();
-    void execute() {
-        context.execute();
+    Entity execute() {
+        return context.execute();
     }
     abstract ScheduledTask nextScheduledTask();
-    abstract long getNextExecutionTime();
+    public abstract long getNextExecutionTime();
 }

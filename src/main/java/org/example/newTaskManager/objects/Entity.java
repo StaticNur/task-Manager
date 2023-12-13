@@ -1,10 +1,12 @@
-package org.example.newTaskManager;
+package org.example.newTaskManager.objects;
 
-import java.text.SimpleDateFormat;
+import org.example.newTaskManager.service.ExecutionContext;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
-public class Entity implements ExecutionContext{
+public class Entity implements ExecutionContext {
     private LocalDate date;
     private String task;
     private boolean finished;
@@ -48,7 +50,21 @@ public class Entity implements ExecutionContext{
     }
 
     @Override
-    public void execute() {
-        System.out.println(this.toString());
+    public Entity execute() {
+        //System.out.println(this.toString());
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Entity entity = (Entity) o;
+        return Objects.equals(task, entity.task);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(task);
     }
 }

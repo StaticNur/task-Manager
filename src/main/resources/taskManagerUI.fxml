@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" text="Task Manager" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="exit" layoutX="308.0" layoutY="509.0" mnemonicParsing="false" text="Exit" />
+            <Button fx:id="stop" layoutX="362.0" layoutY="509.0" mnemonicParsing="false" text="Stop" />
+            <Button fx:id="continueButton" layoutX="425.0" layoutY="509.0" mnemonicParsing="false" text="Continue" />
+            <TableView fx:id="progressBarTable" prefHeight="487.0" prefWidth="593.0">
+              <columns>
+                <TableColumn fx:id="progressBarColumn" prefWidth="236.00002747774124" text="Progress" />
+                <TableColumn fx:id="nothing" minWidth="0.0" prefWidth="215.19996643066406" text="C2" />
+              </columns>
+            </TableView>
+            <TableView fx:id="taskTable" layoutX="592.0" prefHeight="488.0" prefWidth="206.0">
+              <columns>
+                <TableColumn fx:id="nameTaskColumn" prefWidth="205.60001220703126" text="C1" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+  </content>
+</TitledPane>

@@ -1,4 +1,4 @@
-package org.example.newTaskManager;
+package org.example.newTaskManager.service;
 
 public interface TaskStore <T extends ScheduledTask> {
     T peek();

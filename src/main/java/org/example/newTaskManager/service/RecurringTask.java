@@ -1,4 +1,4 @@
-package org.example.newTaskManager;
+package org.example.newTaskManager.service;
 
 public class RecurringTask extends ScheduledTask {
     private final long executionTime;

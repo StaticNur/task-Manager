@@ -1,4 +1,4 @@
-package org.example.newTaskManager;
+package org.example.newTaskManager.service;
 
 public class ExecutorConfig {
     private int numThreads;

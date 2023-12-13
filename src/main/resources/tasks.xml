@@ -15,4 +15,64 @@
         <title>Задача 3</title>
         <completed>true</completed>
     </task>
+    <task>
+        <date>2023-11-24</date>
+        <title>Задача 4</title>
+        <completed>true</completed>
+    </task>
+    <task>
+        <date>2023-11-25</date>
+        <title>Задача 5</title>
+        <completed>false</completed>
+    </task>
+    <task>
+        <date>2023-11-26</date>
+        <title>Задача 6</title>
+        <completed>true</completed>
+    </task>
+    <task>
+        <date>2023-11-24</date>
+        <title>Задача 7</title>
+        <completed>true</completed>
+    </task>
+    <task>
+        <date>2023-11-25</date>
+        <title>Задача 8</title>
+        <completed>false</completed>
+    </task>
+    <task>
+        <date>2023-11-26</date>
+        <title>Задача 9</title>
+        <completed>true</completed>
+    </task>
+    <task>
+        <date>2023-11-24</date>
+        <title>Задача 10</title>
+        <completed>true</completed>
+    </task>
+    <task>
+        <date>2023-11-25</date>
+        <title>Задача 11</title>
+        <completed>false</completed>
+    </task>
+    <task>
+        <date>2023-11-26</date>
+        <title>Задача 12</title>
+        <completed>true</completed>
+    </task>
+    <task>
+        <date>2023-11-24</date>
+        <title>Задача 13</title>
+        <completed>true</completed>
+    </task>
+    <task>
+        <date>2023-11-25</date>
+        <title>Задача 14</title>
+        <completed>false</completed>
+    </task>
+    <task>
+        <date>2023-11-26</date>
+        <title>Задача 15</title>
+        <completed>true</completed>
+    </task>
 </tasks>
